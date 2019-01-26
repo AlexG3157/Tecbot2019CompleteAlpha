@@ -3,7 +3,7 @@ package frc.robot.commands.Autonomous;
 import frc.robot.commands.Arm.*;
 
 import frc.robot.Resources.TecbotConstants;
-
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 
@@ -22,7 +22,7 @@ public class CargoHatch extends CommandGroup {
 
 	public CargoHatch() {
 
-		setShifted(RobotMap.isShift);
+		setShifted(Robot.oi.isShift);
 
 		if (isShifted()) {
 			addSequential(new ArmMoveAuto(TecbotConstants.ARM_ANGLER_CARGO1_PERCENTAGE));

@@ -1,6 +1,7 @@
 package frc.robot.commands.Autonomous;
 
 import frc.robot.Resources.TecbotConstants;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 import frc.robot.commands.Arm.*;
@@ -9,19 +10,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CargoHatchLv2 extends CommandGroup {
 	public boolean shifted;
 
-	public boolean isShifted() {
-		return shifted;
-	}
-
-	public void setShifted(boolean sh) {
-		this.shifted = sh;
-	}
-
+	
 	public CargoHatchLv2() {
 
-		setShifted(RobotMap.isShift);
 
-		if (isShifted()) {
+		if (Robot.oi.isShift) {
 			addSequential(new ArmMoveAuto(TecbotConstants.ARM_ANGLER_CARGO2_PERCENTAGE));
 			addSequential(new ClawAuto(TecbotConstants.CLAW_90));
 			addSequential(new ArmExtenderAuto(TecbotConstants.ARM_EXTENDER_CARGO2));

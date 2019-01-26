@@ -9,7 +9,7 @@ public class OI {
 	public boolean ps4 = true;
 	public Joystick pilot, copilot;
 	public JoystickButton start, select, a, b, rt, lt, rb, lb, y, X, O, square, TRNGL, L1, R1, L2, R2, Share, Options, Pressha;
-	
+	public boolean isShift;
 	public OI() {
     pilot = new Joystick(0);
   /*  copilot = new Joystick(1);
@@ -27,7 +27,8 @@ public class OI {
 		Options = new JoystickButton(pilot, 10);
 		Pressha = new JoystickButton(pilot,11);
 		
-		L1.whileHeld(new Control());
+		L1.whenPressed(new ToggleShift());
+		L1.whenReleased(new ToggleShift());
 		
 		square.whenPressed(new CargoHatch());
 		O.whenPressed(new CargoHatchLv2());

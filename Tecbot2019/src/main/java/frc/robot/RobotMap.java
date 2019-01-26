@@ -75,8 +75,6 @@ If there is no SRX encoder, this HAS to be -1, BOTH!
 	public static int k_tic_per_revolution = 4096;
   public static float k_wheel_diameter = .2032f;
   
-  // SHIFT MODE
-	public static boolean isShift;
 
 	// METHODS IN SUBYSTEM INFO.
 	// EXTENDER ARM ENCODER STUFF
