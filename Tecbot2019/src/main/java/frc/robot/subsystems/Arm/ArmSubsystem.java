@@ -1,15 +1,13 @@
-package frc.robot.subsystems.Arm;
+package frc.robot.subsystems.arm;
 
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-import frc.robot.math.*;
 import frc.robot.math.Math;
-import frc.robot.Resources.*;
-import frc.robot.Resources.TecbotSpeedController.TypeOfMotor;
+import frc.robot.resources.*;
+import frc.robot.resources.TecbotSpeedController.TypeOfMotor;
 
 public class ArmSubsystem extends Subsystem {
 	// Claw

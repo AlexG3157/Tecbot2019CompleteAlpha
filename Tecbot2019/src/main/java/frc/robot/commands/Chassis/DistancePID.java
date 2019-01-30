@@ -1,7 +1,7 @@
-package frc.robot.commands.Chassis;
+package frc.robot.commands.chassis;
 
 import frc.robot.Robot;
-import frc.robot.Resources.TecbotEncoder;
+import frc.robot.resources.TecbotEncoder;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 /**

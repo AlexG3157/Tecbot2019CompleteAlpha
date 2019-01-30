@@ -1,4 +1,4 @@
-package frc.robot.commands.Chassis;
+package frc.robot.commands.chassis;
 
 import frc.robot.Robot;
 

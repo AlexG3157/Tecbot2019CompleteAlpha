@@ -1,17 +1,18 @@
-package frc.robot.subsystems.Chassis;
+package frc.robot.subsystems.chassis;
 
 
 
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.Resources.DifferentialDrive;
-import frc.robot.Resources.RobotConfigurator;
-import frc.robot.Resources.TecbotEncoder;
-import frc.robot.Resources.TecbotSpeedController;
-import frc.robot.Resources.TecbotSpeedController.TypeOfMotor;
-import frc.robot.commands.Chassis.DefaultDriveCommand;
-import frc.robot.subsystems.Watcher.WatchableSubsystem;
+import frc.robot.resources.DifferentialDrive;
+import frc.robot.resources.RobotConfigurator;
+import frc.robot.resources.TecbotEncoder;
+import frc.robot.resources.TecbotSpeedController;
+import frc.robot.resources.TecbotSpeedController.TypeOfMotor;
+import frc.robot.commands.chassis.DefaultDriveCommand;
+import frc.robot.subsystems.watcher.WatchableSubsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -21,6 +22,8 @@ public class DriveTrain extends Subsystem implements WatchableSubsystem{
 			middleRightWheel;
 	DifferentialDrive drive;
 	DoubleSolenoid transmission;
+	Solenoid singleTransmission;
+	boolean highTransmision;
 	boolean reverse= false;
 	boolean transmissionState = false;
 	boolean arrivedToThePosition = false;
@@ -42,6 +45,9 @@ public class DriveTrain extends Subsystem implements WatchableSubsystem{
     }
 
 	public DriveTrain() {
+		singleTransmission = new Solenoid(RobotMap.transmision_port_1, RobotMap.transmision_port_2);
+		singleTransmission.set(false);
+		highTransmision = false;
 		if (RobotMap.class.getSuperclass().getName().equals("RobotMap"))
             throw new NullPointerException("RobotMap is not extending from RobotMapTecbot");
             
@@ -354,7 +360,7 @@ public class DriveTrain extends Subsystem implements WatchableSubsystem{
 	}
 
 	public void drive() {	
-		drive(-Robot.oi.getPilot().getRawAxis(1), Robot.oi.getPilot().getRawAxis(0));
+		drive(-Robot.oi.getPilot().getRawAxis(1), -Robot.oi.getPilot().getRawAxis(0));
 		//drive(Math.max(Robot.oi.getPilot().getY(), Robot.oi.getCopilot().getY()), Math.max((Robot.oi.getPilot().getX()), Robot.oi.getCopilot().getX()));
 	}
 
@@ -459,6 +465,11 @@ public class DriveTrain extends Subsystem implements WatchableSubsystem{
 	@Override
 	public void danger() {
 		System.out.println("Daaaaangerouuuusssssss");
+	}
+
+	public void toggleSingleTransmision(){
+		if(highTransmision) singleTransmission.set(false);
+		if(!highTransmision) singleTransmission.set(true);
 	}
 }
 

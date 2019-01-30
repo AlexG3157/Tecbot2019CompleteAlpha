@@ -8,25 +8,20 @@
 package frc.robot;
 
 
-import frc.robot.subsystems.Watcher.WatcherSubsystem;
-import frc.robot.Resources.RobotConfigurator;
-import frc.robot.Resources.TecbotEncoder;
-import frc.robot.commands.Autonomous.*;
-import frc.robot.commands.Chassis.*;
+import frc.robot.subsystems.watcher.WatcherSubsystem;
+import frc.robot.resources.TecbotEncoder;
+import frc.robot.commands.autonomous.*;
+import frc.robot.commands.chassis.*;
 
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.StatusFrame;
-import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.Chassis.DriveTrain;
-import frc.robot.subsystems.Arm.*;
+import frc.robot.subsystems.chassis.DriveTrain;
+import frc.robot.subsystems.arm.*;
 
 
 /**
@@ -55,14 +50,15 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
     driveTrain = new DriveTrain();
-    /*
+    
 		m_chooser.addOption("Turn 90 Degrees", new PIDTurnToAngle(90));
 		m_chooser.addOption("Move 1 mt", new PIDMoveDistance(1f,.7f));
 		m_chooser.addOption("Move -1 mt", new PIDMoveDistance(-1f,.7f));
 		m_chooser.addOption("Move 5 mt with gyo", new PIDMoveDistance(5f, 0));
 		m_chooser.addOption("Move -1 mt with gyro", new PIDMoveDistance(-1f, 0));
-    m_chooser.addOption("Descend then align", new DescendFromRampThenAlign());
-  */
+		m_chooser.addOption("Descend then align", new DescendFromRampThenAlign());
+		m_chooser.addOption("RightToRightPath", new MoveAlongPath("RightToFurtherRightRocket"));
+		m_chooser.addOption("RightToRight PID", new RightToFurtherRocketHatch(true));
 		SmartDashboard.putData("Auto mode", m_chooser);
 		tecbotgyro = new Navx();
 		leftEncoder = driveTrain.getLeftEncoder();
@@ -107,11 +103,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
-		//.driveSideLeft(Robot.oi.getPilot().getRawAxis(5) + Robot.oi.getPilot().getRawAxis(4));
-		//driveTrain.driveSideRight(-Robot.oi.getPilot().getRawAxis(5) + Robot.oi.getPilot().getRawAxis(4));
-    //driveTrain.drive();
-    //System.out.println(driveTrain.getLeftEncoder().getRaw());
+	Scheduler.getInstance().run();
     System.out.println(leftEncoder.getRaw());
     System.out.println(rightEncoder.getRaw());
     System.out.println("--------------------------------------");

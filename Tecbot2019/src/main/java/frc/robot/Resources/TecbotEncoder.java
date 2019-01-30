@@ -12,7 +12,7 @@
 
 
 
-package frc.robot.Resources;
+package frc.robot.resources;
 
 
 

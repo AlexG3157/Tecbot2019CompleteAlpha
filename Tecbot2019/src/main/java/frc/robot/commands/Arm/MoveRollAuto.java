@@ -1,6 +1,6 @@
-package frc.robot.commands.Arm;
+package frc.robot.commands.arm;
 
-import frc.robot.Resources.TecbotConstants;
+import frc.robot.resources.TecbotConstants;
 import frc.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;

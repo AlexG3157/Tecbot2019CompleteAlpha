@@ -1,8 +1,8 @@
-package frc.robot.commands.Autonomous;
+package frc.robot.commands.autonomous;
 
-import frc.robot.Resources.TecbotConstants;
+import frc.robot.resources.TecbotConstants;
 
-import frc.robot.commands.Arm.*;
+import frc.robot.commands.arm.*;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**

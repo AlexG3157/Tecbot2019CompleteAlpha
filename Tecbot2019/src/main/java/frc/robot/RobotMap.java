@@ -7,9 +7,7 @@
 
 package frc.robot;
 
-import frc.robot.Resources.RobotConfigurator;
-import frc.robot.RobotMap.ChassisConfiguration;
-import frc.robot.RobotMap.MotorConfiguration;
+import frc.robot.resources.RobotConfigurator;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -46,13 +44,15 @@ public class RobotMap {
 	public static int chassis_middleLeftMotor = 5;
 	public static int chassis_middleRightMotor = 2;
 	public static int chassis_leftEncoder[] = {RobotConfigurator.CONFIG_NOT_SET,RobotConfigurator.CONFIG_NOT_SET};
-  public static int chassis_rightEncoder[] = {RobotConfigurator.CONFIG_NOT_SET,RobotConfigurator.CONFIG_NOT_SET};
+  	public static int chassis_rightEncoder[] = {RobotConfigurator.CONFIG_NOT_SET,RobotConfigurator.CONFIG_NOT_SET};
   
+	public static int transmision_port_1 = 0, transmision_port_2 = 1;  
+
 /*
 TALON SRX ENCODERS ON CHASSIS
 If there is no SRX encoder, this HAS to be -1, BOTH!
 */
-  public static int chassis_leftEncoderSRX = 6;
+  public static int chassis_leftEncoderSRX = 5;
   public static int chassis_rightEncoderSRX = 1;
 	
 	public static float straight_P = 1.3672f;
@@ -71,7 +71,8 @@ If there is no SRX encoder, this HAS to be -1, BOTH!
 	
 	// The equivalence between meters to encoder count 
 	// Meter * meters_to_encoder = encoder count 
-	public static float k_meters_to_encoder = (float) (RobotMap.k_tic_per_revolution / (RobotMap.k_wheel_diameter * Math.PI));
+	public static float k_meters_to_encoder = (float) (4096 / (.2034 * Math.PI));
+	//public static float k_meters_to_encoder = (float) (RobotMap.k_tic_per_revolution / (RobotMap.k_wheel_diameter * Math.PI));
 	public static int k_tic_per_revolution = 4096;
   public static float k_wheel_diameter = .2032f;
   

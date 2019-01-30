@@ -5,10 +5,10 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.Resources;
+package frc.robot.resources;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import frc.robot.Resources.TecbotSpeedController.TypeOfMotor;
+import frc.robot.resources.TecbotSpeedController.TypeOfMotor;
 
 /**
  * Add your docs here.

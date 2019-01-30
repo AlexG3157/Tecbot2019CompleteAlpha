@@ -1,6 +1,6 @@
-package frc.robot.commands.Arm;
+package frc.robot.commands.arm;
 
-import frc.robot.Resources.*;
+import frc.robot.resources.*;
 //TEST
 import frc.robot.Robot;
 

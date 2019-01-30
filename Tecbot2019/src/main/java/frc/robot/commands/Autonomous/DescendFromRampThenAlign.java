@@ -1,6 +1,6 @@
-package frc.robot.commands.Autonomous;
+package frc.robot.commands.autonomous;
 
-import frc.robot.commands.Chassis.*;
+import frc.robot.commands.chassis.*;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

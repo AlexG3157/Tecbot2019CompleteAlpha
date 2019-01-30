@@ -1,4 +1,4 @@
-package frc.robot.Resources;
+package frc.robot.resources;
 
 public class TecbotConstants {
 	/*2018

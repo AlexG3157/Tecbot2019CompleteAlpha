@@ -1,4 +1,4 @@
-package frc.robot.commands.Chassis;
+package frc.robot.commands.chassis;
 
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -74,22 +74,24 @@ public class PIDMoveDistance extends Command {
     	float deltaAngle = (float) (targetAngle - Robot.tecbotgyro.getYaw());
     	if(deltaAngle < -180) deltaAngle += 360;
     	if(deltaAngle > 180) deltaAngle -= 360;
-    	leftPID.setDeltaAngle(deltaAngle);
+		leftPID.setDeltaAngle(deltaAngle);
+		rightPID.setDeltaAngle(deltaAngle);
     	}
     	
     }
 
     protected boolean isFinished() {
-        //return (leftPID.onTarget() && rightPID.onTarget());
-    	return leftPID.onTarget();
+        return (leftPID.onTarget() && rightPID.onTarget());
+    	//return leftPID.onTarget();
     }
 
     protected void end() {
-    	//rightPID.disable();
+    	rightPID.disable();
     	leftPID.disable();
     }
 
     protected void interrupted() {
-    	leftPID.disable();
+		leftPID.disable();
+		rightPID.disable();
     }
 }

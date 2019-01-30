@@ -1,4 +1,4 @@
-package frc.robot.Resources;
+package frc.robot.resources;
 
 /**
  * Add your docs here.

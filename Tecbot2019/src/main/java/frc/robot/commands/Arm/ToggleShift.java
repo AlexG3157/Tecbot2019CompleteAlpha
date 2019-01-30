@@ -1,4 +1,4 @@
-package frc.robot.commands.Arm;
+package frc.robot.commands.arm;
 
 import frc.robot.Robot;
 

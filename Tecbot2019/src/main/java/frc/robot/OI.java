@@ -2,8 +2,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.Arm.*;
-import frc.robot.commands.Autonomous.*;
+import frc.robot.commands.arm.*;
+import frc.robot.commands.autonomous.*;
+import frc.robot.commands.chassis.ToggleTransmission;
 
 public class OI {
 	public boolean ps4 = true;
@@ -11,8 +12,10 @@ public class OI {
 	public JoystickButton start, select, a, b, rt, lt, rb, lb, y, X, O, square, TRNGL, L1, R1, L2, R2, Share, Options, Pressha;
 	public boolean isShift;
 	public OI() {
-    pilot = new Joystick(0);
-  /*  copilot = new Joystick(1);
+	pilot = new Joystick(0);
+	a = new JoystickButton(pilot, 1);
+	a.whenPressed(new ToggleTransmission());
+    copilot = new Joystick(1);
   
     if(ps4){
 		square = new JoystickButton(pilot, 1);
@@ -48,7 +51,8 @@ public class OI {
 		start = new JoystickButton(pilot, 7);
 		select = new JoystickButton(pilot, 8);
 		
-		lb.whileHeld(new Control());
+		lb.whenPressed(new ToggleShift());
+		lb.whenReleased(new ToggleShift());
 		
 		a.whenPressed(new CargoHatch());
 		b.whenPressed(new CargoHatchLv2());
@@ -59,7 +63,7 @@ public class OI {
 		//R2.whenPressed(new ExtenderTeleop());
 
     }
-    */
+    
 	}
 
 	public Joystick getPilot() {
