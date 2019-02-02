@@ -5,18 +5,22 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems.Watcher;
+package frc.robot.subsystems.watcher;
 
 /**
- * A subsystem whose state needs to be checked 
+ * A subsystem whose state needs to be checked
  */
 
-public interface WatchableSubsystem
-{
-    public enum State{Correct, Warning, Danger};
+public interface WatchableSubsystem {
+    public enum State {
+        Correct, Warning, Danger
+    };
 
     public State checkState();
+
     public void correct();
+
     public void warning();
+
     public void danger();
 }

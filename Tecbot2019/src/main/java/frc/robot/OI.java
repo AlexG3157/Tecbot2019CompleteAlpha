@@ -18,51 +18,35 @@ public class OI {
 		a = new JoystickButton(pilot, 1);
 		a.whenPressed(new ToggleTransmission());
 		copilot = new Joystick(1);
-
-		if (ps4) {
-			x = new JoystickButton(pilot, 1);
-			a = new JoystickButton(pilot, 2);
-			b = new JoystickButton(pilot, 3);
-			y = new JoystickButton(pilot, 4);
-			lb = new JoystickButton(pilot, 5);
-			rb = new JoystickButton(pilot, 6);
-			back = new JoystickButton(pilot, 9);
-			start = new JoystickButton(pilot, 10);
-
-			lb.whenPressed(new ToggleShift());
-			lb.whenReleased(new ToggleShift());
-
-			a.whenPressed(new CargoHatch());
-			b.whenPressed(new CargoHatchLv2());
-			y.whenPressed(new CargoHatchLv3());
-
-			rb.whenPressed(new PickHatch());
-			// R1.whenPressed(new ClawTeleop());
-			// R2.whenPressed(new ExtenderTeleop());
-		} else {
-
-			a = new JoystickButton(pilot, 1);
-			b = new JoystickButton(pilot, 2);
-			x = new JoystickButton(pilot, 3);
-			y = new JoystickButton(pilot, 4);
-			lb = new JoystickButton(pilot, 5);
-			rb = new JoystickButton(pilot, 6);
-			back = new JoystickButton(pilot, 7);
-			start = new JoystickButton(pilot, 8);
-
-			lb.whenPressed(new ToggleShift());
-			lb.whenReleased(new ToggleShift());
-
-			a.whenPressed(new CargoHatch());
-			b.whenPressed(new CargoHatchLv2());
-			x.whenPressed(new CargoHatchLv3());
-
-			// L2.whenPressed(new PickHatch());
-			rb.whenPressed(new ClawTeleop());
-			// R2.whenPressed(new ExtenderTeleop());
-
-		}
-
+		/*
+		 * if (ps4) { x = new JoystickButton(pilot, 1); a = new JoystickButton(pilot,
+		 * 2); b = new JoystickButton(pilot, 3); y = new JoystickButton(pilot, 4); lb =
+		 * new JoystickButton(pilot, 5); rb = new JoystickButton(pilot, 6); back = new
+		 * JoystickButton(pilot, 9); start = new JoystickButton(pilot, 10);
+		 * 
+		 * lb.whenPressed(new ToggleShift()); lb.whenReleased(new ToggleShift());
+		 * 
+		 * a.whenPressed(new CargoHatch()); b.whenPressed(new CargoHatchLv2());
+		 * y.whenPressed(new CargoHatchLv3());
+		 * 
+		 * rb.whenPressed(new PickHatch()); // R1.whenPressed(new ClawTeleop()); //
+		 * R2.whenPressed(new ExtenderTeleop()); } else {
+		 * 
+		 * a = new JoystickButton(pilot, 1); b = new JoystickButton(pilot, 2); x = new
+		 * JoystickButton(pilot, 3); y = new JoystickButton(pilot, 4); lb = new
+		 * JoystickButton(pilot, 5); rb = new JoystickButton(pilot, 6); back = new
+		 * JoystickButton(pilot, 7); start = new JoystickButton(pilot, 8);
+		 * 
+		 * lb.whenPressed(new ToggleShift()); lb.whenReleased(new ToggleShift());
+		 * 
+		 * a.whenPressed(new CargoHatch()); b.whenPressed(new CargoHatchLv2());
+		 * x.whenPressed(new CargoHatchLv3());
+		 * 
+		 * // L2.whenPressed(new PickHatch()); rb.whenPressed(new ClawTeleop()); //
+		 * R2.whenPressed(new ExtenderTeleop());
+		 * 
+		 * }
+		 */
 	}
 
 	public Joystick getPilot() {

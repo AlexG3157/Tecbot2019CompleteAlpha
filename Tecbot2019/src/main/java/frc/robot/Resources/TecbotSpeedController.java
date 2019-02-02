@@ -10,8 +10,6 @@
 
 /*----------------------------------------------------------------------------*/
 
-
-
 package frc.robot.resources;
 
 import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
@@ -23,13 +21,14 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import edu.wpi.first.wpilibj.*;
 
 /**
-
+ * 
  * Add your docs here.
-
+ * 
  */
 
 public class TecbotSpeedController {
@@ -40,16 +39,14 @@ public class TecbotSpeedController {
 
 	}
 
-
-
 	private BaseMotorController phoenixMotor;
 
 	private SpeedController frcMotor;
 
 	private TypeOfMotor motorToUse;
 
-	public TypeOfMotor getType(){
-			return motorToUse;
+	public TypeOfMotor getType() {
+		return motorToUse;
 	}
 
 	public TecbotSpeedController(int port, TypeOfMotor m) {
@@ -71,8 +68,6 @@ public class TecbotSpeedController {
 			frcMotor = new PWMTalonSRX(port);
 
 			break;
-
-
 
 		case VIKTOR:
 
@@ -105,8 +100,6 @@ public class TecbotSpeedController {
 		}
 
 	}
-
-
 
 	public void set(double speed) {
 
@@ -156,8 +149,6 @@ public class TecbotSpeedController {
 
 	}
 
-
-
 	public int getEncPosition() {
 
 		switch (motorToUse) {
@@ -205,8 +196,6 @@ public class TecbotSpeedController {
 		}
 
 	}
-
-
 
 	public void stopMotor() {
 
@@ -258,7 +247,7 @@ public class TecbotSpeedController {
 
 	}
 
-	public double get(){
+	public double get() {
 
 		switch (motorToUse) {
 
@@ -294,10 +283,8 @@ public class TecbotSpeedController {
 
 		}
 
-		
-
 	}
-	
+
 	public void setEncoderPosition(int value) {
 
 		switch (motorToUse) {
@@ -347,10 +334,21 @@ public class TecbotSpeedController {
 		}
 
 	}
-	public TalonSRX getTalonSRX(){
-		if(motorToUse == TypeOfMotor.TALON_SRX)
-			return (TalonSRX)phoenixMotor;
+
+	public TalonSRX getTalonSRX() {
+		if (motorToUse == TypeOfMotor.TALON_SRX)
+			return (TalonSRX) phoenixMotor;
 		return null;
+
+	}
+
+	/*
+	 * WARNING: this will only work with TALON SRX
+	 * 
+	 */
+	public void setBrakeMode(boolean doBrake) {
+
+		((TalonSRX) phoenixMotor).setNeutralMode(doBrake ? NeutralMode.Brake : NeutralMode.Coast);
 
 	}
 

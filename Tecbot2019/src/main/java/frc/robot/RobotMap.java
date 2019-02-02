@@ -95,10 +95,10 @@ public class RobotMap {
 	public static final double CLAW_CONTROL_MIN_DISTANCE = 10;
 
 	// Arm
-	public static final int ARMMOTOR_1 = 0;
-	public static final int ARMMOTOR_2 = 1;
-	public static final int EXTEND_ARM_MOTOR_1_PORT = 2;
-	public static final int EXTEND_ARM_MOTOR_2_PORT = 2;
+	public static final int ARM_MOTOR_LEFT = 8;
+	public static final int ARM_MOTOR_RIGHT = 7;
+	public static final int EXTEND_ARM_MOTOR_1_PORT = 10;
+	public static final int EXTEND_ARM_MOTOR_2_PORT = 11;
 
 	public static final int ARM_UNITS_PER_LEVEL = 2500; // EXAMPLE
 	public static final int ARM_EXTENDER_UNITS_UP = 3850; // EXAMPLE
@@ -119,6 +119,6 @@ public class RobotMap {
 
 	public static final int CLAW_UNITS_PER_LEVEL = 1000; // EXAMPLE
 
-	public static boolean isUsingPS4Controller = true;
+	public static boolean isUsingPS4Controller = false;
 
 }

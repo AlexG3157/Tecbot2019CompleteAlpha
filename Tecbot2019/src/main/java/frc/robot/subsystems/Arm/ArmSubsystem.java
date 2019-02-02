@@ -25,8 +25,10 @@ public class ArmSubsystem extends Subsystem {
 
 	public ArmSubsystem() {
 		// Arm constructor
-		m1arm = new TecbotSpeedController(RobotMap.ARMMOTOR_1, TypeOfMotor.TALON_SRX);
-		m2arm = new TecbotSpeedController(RobotMap.ARMMOTOR_2, TypeOfMotor.TALON_SRX);
+		m1arm = new TecbotSpeedController(RobotMap.ARM_MOTOR_LEFT, TypeOfMotor.TALON_SRX);
+		m2arm = new TecbotSpeedController(RobotMap.ARM_MOTOR_RIGHT, TypeOfMotor.TALON_SRX);
+		m1arm.setBrakeMode(true);
+		m2arm.setBrakeMode(true);
 		extenderMotor1 = new TecbotSpeedController(RobotMap.EXTEND_ARM_MOTOR_1_PORT, TypeOfMotor.TALON_SRX);
 		extenderMotor2 = new TecbotSpeedController(RobotMap.EXTEND_ARM_MOTOR_2_PORT, TypeOfMotor.TALON_SRX);
 
@@ -204,8 +206,8 @@ public class ArmSubsystem extends Subsystem {
 	// Teleop
 
 	public void armTeleop() {
-		m1arm.set(Robot.oi.getCopilot().getRawAxis(5));
-		m2arm.set(Robot.oi.getCopilot().getRawAxis(5));
+		m1arm.set(-Robot.oi.getPilotRightStickY());
+		m2arm.set(Robot.oi.getPilotRightStickY());
 
 	}
 
@@ -214,8 +216,9 @@ public class ArmSubsystem extends Subsystem {
 	}
 
 	public void extendTeleop(double speed) {
+		speed = java.lang.Math.floor(speed * 10) / 10.0;
 		extenderMotor1.set(speed);
-		extenderMotor2.set(-speed);
+		extenderMotor2.set(speed);
 	}
 
 	public void rollersTeleop(double speed) {

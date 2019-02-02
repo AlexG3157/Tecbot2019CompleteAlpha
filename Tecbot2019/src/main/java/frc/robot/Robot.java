@@ -54,6 +54,9 @@ public class Robot extends TimedRobot {
 		leftEncoder = driveTrain.getLeftEncoder();
 		rightEncoder = driveTrain.getRightEncoder();
 
+		leftEncoder.resetEncoder();
+		rightEncoder.resetEncoder();
+
 		m_chooser.addOption("Turn 90 Degrees", new PIDTurnToAngle(90));
 		m_chooser.addOption("Move 1 mt", new PIDMoveDistance(1f, .7f));
 		m_chooser.addOption("Move -1 mt", new PIDMoveDistance(-1f, .7f));
@@ -90,8 +93,7 @@ public class Robot extends TimedRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		tecbotgyro.run();
-		armSub.armTeleop();
-		armSub.extendTeleop(oi.getPilot().getRawAxis(2));
+
 	}
 
 	@Override
@@ -107,7 +109,8 @@ public class Robot extends TimedRobot {
 		System.out.println(leftEncoder.getRaw());
 		System.out.println(rightEncoder.getRaw());
 		System.out.println("--------------------------------------");
-
+		armSub.armTeleop();
+		armSub.extendTeleop(oi.getPilotRightStickX());
 	}
 
 	@Override
