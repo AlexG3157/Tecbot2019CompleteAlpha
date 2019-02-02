@@ -14,9 +14,8 @@ public class ArmSubsystem extends Subsystem {
 	TecbotSpeedController clawMotor, roller, actuator;// actuator may not be used
 	TecbotEncoder clawEnc, m1Encoder, m2Encoder;
 
-
 	// Motor
-	TecbotSpeedController m1arm, m2arm, extenderMotor;
+	TecbotSpeedController m1arm, m2arm, extenderMotor1, extenderMotor2;
 
 	// **there may be 2strechMotors**
 	/*
@@ -28,7 +27,8 @@ public class ArmSubsystem extends Subsystem {
 		// Arm constructor
 		m1arm = new TecbotSpeedController(RobotMap.ARMMOTOR_1, TypeOfMotor.TALON_SRX);
 		m2arm = new TecbotSpeedController(RobotMap.ARMMOTOR_2, TypeOfMotor.TALON_SRX);
-		extenderMotor = new TecbotSpeedController(RobotMap.EXTEND_ARM_PORT_1, TypeOfMotor.TALON_SRX);
+		extenderMotor1 = new TecbotSpeedController(RobotMap.EXTEND_ARM_MOTOR_1_PORT, TypeOfMotor.TALON_SRX);
+		extenderMotor2 = new TecbotSpeedController(RobotMap.EXTEND_ARM_MOTOR_2_PORT, TypeOfMotor.TALON_SRX);
 
 		// Claw constructor
 		clawMotor = new TecbotSpeedController(RobotMap.CLAWMOTOR, TypeOfMotor.TALON_SRX);
@@ -101,7 +101,7 @@ public class ArmSubsystem extends Subsystem {
 	 */
 	public double getExtenderEncoder() {
 
-		double d = extenderMotor.getEncPosition();
+		double d = extenderMotor1.getEncPosition();
 		return d;
 	}
 
@@ -120,18 +120,18 @@ public class ArmSubsystem extends Subsystem {
 		double power = Math.clamp(distance / RobotMap.EXTENDER_CONTROL_MAX_DISTANCE, -1, 1);
 
 		if (Math.abs(distance) <= RobotMap.EXTENDER_CONTROL_MIN_DISTANCE) {
-			extenderMotor.set(0);
-			extenderMotor.set(0);
+			extenderMotor1.set(0);
+			extenderMotor1.set(0);
 			return true;
 		}
-		extenderMotor.set(power * maxPower);
-		extenderMotor.set(power * maxPower);
+		extenderMotor1.set(power * maxPower);
+		extenderMotor1.set(power * maxPower);
 		return false;
 
 	}
 
 	public void resetExtendArm() {
-		extenderMotor.set(0);
+		extenderMotor1.set(0);
 	}
 
 	public boolean startConfiguration(double d, double s) {
@@ -204,15 +204,18 @@ public class ArmSubsystem extends Subsystem {
 	// Teleop
 
 	public void armTeleop() {
-		m1arm.set(Robot.oi.getCopilot().getY());
+		m1arm.set(Robot.oi.getCopilot().getRawAxis(5));
+		m2arm.set(Robot.oi.getCopilot().getRawAxis(5));
+
 	}
 
 	public void clawTeleopMove(double speed) {
 		clawMotor.set(speed);
 	}
 
-	public void stretchTeleop(double speed) {
-		extenderMotor.set(speed);
+	public void extendTeleop(double speed) {
+		extenderMotor1.set(speed);
+		extenderMotor2.set(-speed);
 	}
 
 	public void rollersTeleop(double speed) {

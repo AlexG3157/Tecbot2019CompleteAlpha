@@ -25,7 +25,7 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
-	
+
 	public enum MotorConfiguration {
 		CAN, TALON
 	}
@@ -43,39 +43,39 @@ public class RobotMap {
 	public static int chassis_rearLeftMotor = 6;
 	public static int chassis_middleLeftMotor = 5;
 	public static int chassis_middleRightMotor = 2;
-	public static int chassis_leftEncoder[] = {RobotConfigurator.CONFIG_NOT_SET,RobotConfigurator.CONFIG_NOT_SET};
-  	public static int chassis_rightEncoder[] = {RobotConfigurator.CONFIG_NOT_SET,RobotConfigurator.CONFIG_NOT_SET};
-  
-	public static int transmision_port_1 = 0, transmision_port_2 = 1;  
+	public static int chassis_leftEncoder[] = { RobotConfigurator.CONFIG_NOT_SET, RobotConfigurator.CONFIG_NOT_SET };
+	public static int chassis_rightEncoder[] = { RobotConfigurator.CONFIG_NOT_SET, RobotConfigurator.CONFIG_NOT_SET };
 
-/*
-TALON SRX ENCODERS ON CHASSIS
-If there is no SRX encoder, this HAS to be -1, BOTH!
-*/
-  public static int chassis_leftEncoderSRX = 5;
-  public static int chassis_rightEncoderSRX = 1;
-	
+	public static int transmision_port_1 = 0, transmision_port_2 = 1;
+
+	/*
+	 * TALON SRX ENCODERS ON CHASSIS If there is no SRX encoder, this HAS to be -1,
+	 * BOTH!
+	 */
+	public static int chassis_leftEncoderSRX = 5;
+	public static int chassis_rightEncoderSRX = 1;
+
 	public static float straight_P = 1.3672f;
 	public static float straight_I = .3593f;
 	public static float straight_D = .0898f;
 	public static float straight_Tolerance = 10;
-	
-	//public static float straight_P =  1.58950784091104f;
-	//public static float straight_I = 16.1648949353988f;
-	//public static float straight_D = .02348467516511333f;
-	
+
+	// public static float straight_P = 1.58950784091104f;
+	// public static float straight_I = 16.1648949353988f;
+	// public static float straight_D = .02348467516511333f;
+
 	public static float turning_P = 1.58950784091104f;
 	public static float turning_I = 16.1648949353988f;
 	public static float turning_D = .02348467516511333f;
 	public static float turning_Tolerance = 7;
-	
-	// The equivalence between meters to encoder count 
-	// Meter * meters_to_encoder = encoder count 
+
+	// The equivalence between meters to encoder count
+	// Meter * meters_to_encoder = encoder count
 	public static float k_meters_to_encoder = (float) (4096 / (.2034 * Math.PI));
-	//public static float k_meters_to_encoder = (float) (RobotMap.k_tic_per_revolution / (RobotMap.k_wheel_diameter * Math.PI));
+	// public static float k_meters_to_encoder = (float)
+	// (RobotMap.k_tic_per_revolution / (RobotMap.k_wheel_diameter * Math.PI));
 	public static int k_tic_per_revolution = 4096;
-  public static float k_wheel_diameter = .2032f;
-  
+	public static float k_wheel_diameter = .2032f;
 
 	// METHODS IN SUBYSTEM INFO.
 	// EXTENDER ARM ENCODER STUFF
@@ -97,11 +97,12 @@ If there is no SRX encoder, this HAS to be -1, BOTH!
 	// Arm
 	public static final int ARMMOTOR_1 = 0;
 	public static final int ARMMOTOR_2 = 1;
-	public static final int STRETCHARM = 1;
+	public static final int EXTEND_ARM_MOTOR_1_PORT = 2;
+	public static final int EXTEND_ARM_MOTOR_2_PORT = 2;
 
 	public static final int ARM_UNITS_PER_LEVEL = 2500; // EXAMPLE
-	public static final int ARM_STRECH_UNITS_UP = 3850; // EXAMPLE
-	public static final int ARM_STRECH_UNITS_DOWN = 100; // EXAMPLE
+	public static final int ARM_EXTENDER_UNITS_UP = 3850; // EXAMPLE
+	public static final int ARM_EXTENDER_UNITS_DOWN = 100; // EXAMPLE
 
 	public static final int ARMENC_1_PORT1 = 1;
 	public static final int ARMENC_1_PORT2 = 1;
@@ -117,6 +118,7 @@ If there is no SRX encoder, this HAS to be -1, BOTH!
 	public static final int CLAWENC_2 = 1;
 
 	public static final int CLAW_UNITS_PER_LEVEL = 1000; // EXAMPLE
-	public static final int EXTEND_ARM_PORT_1 = 2;
+
+	public static boolean isUsingPS4Controller = true;
 
 }
